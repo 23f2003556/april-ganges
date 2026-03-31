@@ -1,27 +1,25 @@
 import { create } from 'zustand'
 
-export type VisaStatus = 
-  | 'Student Visa'
-  | 'Work Permit'
-  | 'Permanent Resident'
-  | 'Investor Visa'
-  | 'Temporary Protection'
-  | 'Other';
-
 export interface FormData {
-  dob: Date;
-  yearsLived: number;
-  visaStatus: VisaStatus;
+  dob: Date | null;
+  whatsapp: string;
 }
 
-type AppState = { status: 'form' };
+type AppState =
+  | { status: 'form' }
+  | { status: 'searching' }
+  | { status: 'reveal' };
 
 interface AppStore {
   state: AppState;
   setForm: () => void;
+  setSearching: () => void;
+  setReveal: () => void;
 }
 
 export const useAppStore = create<AppStore>((set) => ({
   state: { status: 'form' },
   setForm: () => set({ state: { status: 'form' } }),
+  setSearching: () => set({ state: { status: 'searching' } }),
+  setReveal: () => set({ state: { status: 'reveal' } }),
 }));

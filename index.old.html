@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Ganges - Shop Like You're Home</title>
+  <!-- Modern Typography: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Meta/Google Pixel stubs -->
+  <script>
+    // Tracking stubs
+    window.trackLead = function () {
+      console.log("Meta Pixel: Form Submitted");
+      console.log("Google Analytics: Lead Captured");
+    };
+  </script>
+</head>
+
+<body>
+  <!-- Background visual -->
+  <div class="background-container">
+    <div class="overlay-gradient"></div>
+  </div>
+
+  <!-- Main Landing Page App -->
+  <div id="app" class="app-container">
+
+    <!-- Primary Interface -->
+    <main class="landing-content" id="landing-screen">
+      <header class="hero-section">
+        <h1 class="hero-title">You might be waiting for citizenship...</h1>
+        <p class="hero-subtitle">but you don't have to wait for India.</p>
+      </header>
+
+      <section class="form-section glass">
+        <p class="form-instruction">Enter your details to claim your first free order.</p>
+        <form id="lead-form">
+          <div class="input-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" required />
+          </div>
+
+          <div class="input-group">
+            <label for="whatsapp">WhatsApp Number</label>
+            <div class="phone-input">
+              <span class="country-code">+1</span>
+              <input type="tel" id="whatsapp" name="whatsapp" placeholder="000-000-0000" pattern="[0-9]{10}"
+                maxlength="10" required />
+            </div>
+            <span class="error-msg" id="phone-error">Please enter a valid 10-digit number.</span>
+          </div>
+
+          <button type="submit" class="cta-button">
+            Claim First Free Order
+            <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <!-- Searching / Authenticating State (Hidden by default) -->
+    <section class="magic-state hidden" id="magic-screen">
+      <div class="magic-content">
+        <div class="spinner-container">
+          <img src="/mandala.png" alt="Loading Mandala" class="mandala-spinner" />
+        </div>
+        <h2 class="magic-text">Authenticating your journey...</h2>
+        <p class="magic-subtext">Citizenship takes time, but shop like you're in India.</p>
+      </div>
+    </section>
+
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

@@ -1,16 +1,10 @@
-import { AnimatePresence } from 'framer-motion';
 import { MainLayout } from '@/layouts/MainLayout';
-import { CalculatorForm } from '@/components/CalculatorForm';
-import { FadeIn } from '@/components/animations/FadeIn';
+import { LeadCaptureFlow } from '@/components/LeadCaptureFlow';
 
 function App() {
   return (
     <MainLayout>
-      <AnimatePresence mode="wait">
-        <FadeIn key="form" className="w-full">
-          <CalculatorForm />
-        </FadeIn>
-      </AnimatePresence>
+      <LeadCaptureFlow />
     </MainLayout>
   );
 }

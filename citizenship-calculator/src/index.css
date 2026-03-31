@@ -1,16 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-navy: #003865;
-  --color-accent-orange: #F39C12;
-  --color-accent-red: #D32F2F;
+  --color-primary-navy: #0055A4; /* Ganges Blue */
+  --color-accent-orange: #FF9933; /* Marigold Orange */
+  --color-accent-red: #E03C31; /* Subtle red for errors */
   --color-accent-ocean: #2980B9;
-  --color-base-cream: #FFF4E0; /* Very warm beautiful poster cream */
+  --color-accent-gold: #D4AF37; /* Temple Gold */
+  --color-base-cream: #FFF4E0;
 }
 
 @layer base {
   body {
     @apply bg-base-cream text-primary-navy antialiased;
+    overflow-x: hidden;
   }
 }
 
