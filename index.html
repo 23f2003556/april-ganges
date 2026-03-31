@@ -425,7 +425,15 @@ function handleClaim(){
   if(!city){highlight('cityInput');return;}
   if(phone.length<10){highlight('phoneInput');return;}
 
-
+  // Send data to forminit
+  fetch('https://forminit.com/f/pnng9u79qsk', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      city: city,
+      whatsapp: '+1' + phone
+    })
+  }).catch(err => console.error('Submission error:', err));
 
   document.getElementById('overlay').classList.add('on');
   document.body.style.overflow='hidden';
